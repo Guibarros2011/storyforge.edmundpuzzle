@@ -1,0 +1,87 @@
+# DIAGNÓSTICO SFBS - "Pedro Rocha e o Poder do CoMEx"
+
+## 1. O QUE ENTENDEMOS
+
+**PROJETO**: Uma história de ficção científica jovem com elementos pedagógicos, estruturada para plataforma transmídia (StoryForge). Pedro Rocha, 14 anos, herda o CoMEx — um dispositivo de teletransporte quântico — de seu avô cientista Benito, que está morrendo. O protagonista viaja para os Estados Unidos através de portais dimensionais e encontra o Professor Ovídio Naso, que se torna seu mentor.
+
+**PERSONAGENS CENTRAIS**: Pedro Rocha (protagonista adolescente), Vovô Benito/Nito (inventor moribundo), Professor Ovídio Naso (mentor misterioso), Karuna (assistente de laboratório), família extensa (Vovó Idália, Julie a cadela, Apolo o segurança).
+
+**CONFLITO**: Interno e externo — Pedro deve aprender a usar responsavelmente uma tecnologia que pode transformar o mundo, enquanto lida com a perda iminente do avô e o peso da herança recebida.
+
+**TOM**: Bildungsroman científico com coração emocional forte. Combina wonder juvenil com profundidade filosófica, humor sutil e melancolia familiar. Linguagem acessível mas sofisticada, com camadas para diferentes idades.
+
+## 2. COBERTURA DOS 11 FRUTOS
+
+**🗺️ Mapa do Mundo**: ⚠️ PARCIAL
+- Geografia real estabelecida (Brasil → Estados Unidos via portal)
+- Locações específicas: casa dos avós, laboratório subterrâneo, Virginia House
+- LACUNA: Escala global do impacto do CoMEx não explorada
+
+**🏛️ Sistema Político**: ❌ LACUNA
+- Nenhuma estrutura governamental mencionada
+- Implicações políticas do teletransporte não abordadas
+
+**📜 Fatos Históricos**: ⚠️ PARCIAL  
+- Cronologia pessoal de Pedro bem estabelecida
+- LACUNA: História da invenção do CoMEx, contexto histórico maior
+
+**🎭 Cultura**: ✅ COBERTO
+- Cultura familiar brasileira rica e detalhada
+- Contraste cultural Brasil/EUA estabelecido
+- Tradições, comida, dinâmicas familiares bem desenvolvidas
+
+**⚗️ Magia e Tecnologia**: ⚠️ PARCIAL
+- CoMEx bem conceituado (computação quântica + portais)
+- LACUNA: Limitações técnicas, outros usos da tecnologia
+
+**🐉 Seres Fantásticos**: ❌ LACUNA
+- Apenas animais de estimação mencionados
+- Universo aparentemente realista
+
+**💰 Economia**: ❌ LACUNA
+- Impacto econômico do teletransporte instantâneo não explorado
+
+**🗣️ Língua e Cultura**: ✅ COBERTO
+- Esperanto como elemento cultural importante
+- Linguagem específica de cada personagem bem desenvolvida
+
+**🌟 Mitologia**: ⚠️ PARCIAL
+- Menção a Akvon (mundo inventado por Pedro e avô)
+- LACUNA: Cosmologia maior do universo
+
+**👥 Personagens**: ✅ COBERTO
+- Personagens principais bem caracterizados
+- Arcos emocionais claros, especialmente Pedro
+
+**📖 Narrativa e Trama**: ⚠️ PARCIAL
+- Estrutura de jornada do herói estabelecida
+- LACUNA: Conflito principal e antagonistas não definidos
+
+## 3. O QUE É GRAU I (IMUTÁVEL)
+
+1. **O CoMEx como herança familiar** - A tecnologia nasce do amor entre avô e neto
+2. **Pedro tem 14 anos** - A idade exata é crucial para o tom e jornada
+3. **A doença do avô como catalisador** - O peso emocional que move toda a história  
+4. **O caráter pedagógico integrado** - Não é didatismo forçado, mas aprendizado orgânico
+5. **A estrutura transmídia** - Concebido para múltiplas camadas de experiência
+6. **O realismo emocional** - Mesmo com ficção científica, os sentimentos são genuínos
+
+## 4. AS TRÊS PERGUNTAS MAIS URGENTES
+
+1. **Qual é o antagonista principal?** O CoMEx claramente não pode existir sem consequências. Quem ou o que se opõe a Pedro? Governos? Outros cientistas? As próprias limitações da tecnologia?
+
+2. **Como funciona exatamente o mundo pós-CoMEx?** Se o teletransporte é possível, por que ainda é secreto? Qual o plano de Benito para revelar/usar essa tecnologia?
+
+3. **Qual é a verdadeira herança de Ovídio Naso?** Ele claramente não é apenas um acadêmico. Qual sua conexão com Benito? Que conhecimento específico ele guarda?
+
+## 5. CONVITE CRIATIVO
+
+**O Fio de Ouro**: A menção casual ao mundo inventado "Akvon" é pura genialidade narrativa escondida. 
+
+Aquelas tardes de Pedro e Benito construindo caravelas e inventando histórias sobre um "planeta azul diferente e estranhamente parecido com o nosso" não são apenas memória afetiva — são **preparação inconsciente**. Ovídio, com sua biblioteca impossível e seus métodos pedagógicos únicos, pode estar ensinando Pedro que Akvon não era imaginação pura, mas **intuição dimensional**. 
+
+E se o CoMEx não apenas transporta através do espaço, mas através de **realidades paralelas**? E se Pedro precisa aprender a navegar não apenas geografias, mas **geografias ontológicas** — versões ligeiramente diferentes da Terra onde suas escolhas criam ecos?
+
+Isso explicaria por que Ovídio surge exatamente quando Pedro precisa, por que a casa dele parece existir "fora" do mundo normal, e daria ao projeto uma profundidade filosófica que honra tanto o coração emocional quanto a ambição intelectual da obra.
+
+**Primeira sessão**: Explorar como transformar Akvon de memória em chave mestra do universo.
