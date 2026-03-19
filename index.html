@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StoryForge · Edmund Puzzle · Bem-vindo, Adriano</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=JetBrains+Mono:wght@300;400&display=swap');
 
@@ -595,26 +596,7 @@ footer {
     <p class="body-text" style="text-align:center;max-width:480px;margin:0 auto;">Arraste tudo que existe sobre o Edmund Puzzle. O SFBS organiza no repositório e gera um diagnóstico completo para nossa primeira sessão.</p>
   </div>
 
-  <!-- config -->
-  <div class="config-panel">
-    <div class="config-toggle" onclick="toggleConfig()">
-      <span class="config-icon" id="cfg-icon">▶</span>
-      <span class="config-toggle-label">Configuração de Credenciais</span>
-      <span class="config-status" id="cfg-status">⚠ necessário configurar</span>
-    </div>
-    <div class="config-body" id="cfg-body">
-      <div>
-        <div class="config-label-sm">GitHub Personal Access Token</div>
-        <input class="config-input" type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="checkConfig()">
-        <div class="config-hint">Permissão <code>repo</code> necessária. <a href="https://github.com/settings/tokens" target="_blank">Gerar token →</a></div>
-      </div>
-      <div>
-        <div class="config-label-sm">Anthropic API Key</div>
-        <input class="config-input" type="password" id="claude-key" placeholder="sk-ant-xxxxxxxxxxxxxxxxxxxx" oninput="checkConfig()">
-        <div class="config-hint">Necessária para gerar o diagnóstico SFBS após o upload.</div>
-      </div>
-    </div>
-  </div>
+  <!-- sem credenciais — backend seguro via Worker -->
 
   <!-- drop zone -->
   <div class="upload-zone" id="upload-zone"
@@ -672,9 +654,10 @@ footer {
 
 <script>
 // ── CONSTANTS ───────────────────────────────────────────
-const GH_OWNER  = 'Guibarros2011';
-const GH_REPO   = 'storyforge.edmundpuzzle';
-const GH_BRANCH = 'main';
+const GH_OWNER   = 'Guibarros2011';
+const GH_REPO    = 'storyforge.edmundpuzzle';
+const GH_BRANCH  = 'main';
+const WORKER_URL = 'https://sfbs-api.guibarros2011.workers.dev'; // ← substitua pela sua URL
 
 let files = [];
 
@@ -692,27 +675,12 @@ window.addEventListener('scroll', () => {
 });
 
 // ── CONFIG ───────────────────────────────────────────────
-function toggleConfig() {
-  const body = document.getElementById('cfg-body');
-  const icon = document.getElementById('cfg-icon');
-  const open = body.classList.toggle('open');
-  icon.textContent = open ? '▼' : '▶';
-  icon.classList.toggle('open', open);
-}
 
-function checkConfig() {
-  const token = document.getElementById('gh-token').value.trim();
-  const key   = document.getElementById('claude-key').value.trim();
-  const s     = document.getElementById('cfg-status');
-  if (token && key) { s.textContent = '✓ configurado'; s.className = 'config-status ok'; }
-  else              { s.textContent = '⚠ necessário configurar'; s.className = 'config-status'; }
-  updateBtn();
-}
+
+function checkConfig() { updateBtn(); }
 
 function updateBtn() {
-  const token = document.getElementById('gh-token').value.trim();
-  const key   = document.getElementById('claude-key').value.trim();
-  document.getElementById('submit-btn').disabled = !(token && key && files.length > 0);
+  document.getElementById('submit-btn').disabled = files.length === 0;
 }
 
 // ── DRAG DROP ────────────────────────────────────────────
@@ -769,24 +737,78 @@ function log(msg, type='info') {
   el.appendChild(line); el.scrollTop = el.scrollHeight;
 }
 
-// ── GITHUB ───────────────────────────────────────────────
-async function uploadToGitHub(file, token) {
+// ── EXTRATOR DE TEXTO DOS ARQUIVOS ──────────────────────
+async function extractTextFromFile(file) {
+  return new Promise((resolve) => {
+    const ext = file.name.split('.').pop().toLowerCase();
+
+    // TXT e MD — leitura direta
+    if (['txt','md'].includes(ext)) {
+      const reader = new FileReader();
+      reader.onload = e => resolve({ name: file.name, text: e.target.result.slice(0, 8000) });
+      reader.onerror = () => resolve({ name: file.name, text: '[erro ao ler]' });
+      reader.readAsText(file);
+      return;
+    }
+
+    // DOCX — extrair XML usando JSZip (carregado no head)
+    if (['docx','doc'].includes(ext)) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          if (typeof JSZip === 'undefined') {
+            resolve({ name: file.name, text: '[DOCX: JSZip nao disponivel]' });
+            return;
+          }
+          const zip = await JSZip.loadAsync(e.target.result);
+          const xmlFile = zip.file('word/document.xml');
+          if (!xmlFile) { resolve({ name: file.name, text: '[DOCX sem conteudo]' }); return; }
+          const xml = await xmlFile.async('string');
+          const text = xml
+            .replace(/<w:p[ >/]/g, '\n')
+            .replace(/<[^>]+>/g, '')
+            .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"')
+            .replace(/[ \t]+/g, ' ')
+            .replace(/\n\s*\n\s*\n/g, '\n\n')
+            .trim().slice(0, 12000);
+          resolve({ name: file.name, text });
+        } catch(err) {
+          resolve({ name: file.name, text: '[Erro DOCX: ' + err.message + ']' });
+        }
+      };
+      reader.onerror = () => resolve({ name: file.name, text: '[erro ao ler DOCX]' });
+      reader.readAsArrayBuffer(file);
+      return;
+    }
+
+    // PDF e imagens — não extraímos texto, mas informamos
+    if (['pdf'].includes(ext)) {
+      resolve({ name: file.name, text: `[PDF: ${file.name} — análise por nome e tamanho]` });
+      return;
+    }
+
+    // Imagens e outros — apenas metadados
+    resolve({ name: file.name, text: `[${ext.toUpperCase()}: ${file.name}]` });
+  });
+}
+
+// ── UPLOAD VIA WORKER (sem chaves no cliente) ────────────
+async function uploadToGitHub(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = async (e) => {
       try {
-        const b64  = e.target.result.split(',')[1];
-        const path = `${folder(file.name)}/${file.name}`;
-        const url  = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
-        let sha = null;
-        try {
-          const chk = await fetch(url, { headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'} });
-          if (chk.ok) sha = (await chk.json()).sha;
-        } catch(_) {}
-        const body = { message:`SFBS upload: ${file.name}`, content:b64, branch:GH_BRANCH };
-        if (sha) body.sha = sha;
-        const res = await fetch(url, { method:'PUT', headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'}, body:JSON.stringify(body) });
-        if (!res.ok) { const err = await res.json(); reject(new Error(err.message||`HTTP ${res.status}`)); }
+        const b64 = e.target.result.split(',')[1];
+        const res = await fetch(`${WORKER_URL}/upload`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            filename:    file.name,
+            content_b64: b64,
+            repo_slug:   GH_REPO
+          })
+        });
+        if (!res.ok) { const err = await res.json(); reject(new Error(err.error || `HTTP ${res.status}`)); }
         else resolve(await res.json());
       } catch(err) { reject(err); }
     };
@@ -795,48 +817,19 @@ async function uploadToGitHub(file, token) {
   });
 }
 
-// ── CLAUDE ───────────────────────────────────────────────
-async function analyzeWithClaude(summary, key) {
-  const prompt = `Você é o StoryForge Building System (SFBS), operando como Editor Canônico e Arquiteto de Universo.
-
-O autor Adriano Gilberti enviou os seguintes materiais do projeto Edmund Puzzle and the Mystery of the Sacred Relics:
-
-${summary}
-
-CONTEXTO DO PROJETO:
-- Título: Edmund Puzzle and the Mystery of the Sacred Relics
-- Plataforma: VR (Oculus Quest / Steam VR)
-- Gêneros: Adventure, Puzzle, Mystery, Action-Adventure, Interactive Fiction, Story Rich
-- Premissa: Aventura no universo cristão com viagem no tempo para recuperar relíquias sagradas e salvar a humanidade de um inimigo misterioso e extremamente poderoso
-- Desenvolvedor: Fish Journey XR (Coconut Creek, FL, USA) — lançado outubro 2023
-
-Produza um DIAGNÓSTICO SFBS completo:
-
-## 1. O QUE ENTENDEMOS
-Resuma o que os materiais enviados revelam sobre o universo do Edmund Puzzle.
-
-## 2. COBERTURA DOS 11 FRUTOS
-Para cada Fruto, classifique: ✅ COBERTO / ⚠️ PARCIAL / ❌ LACUNA
-Frutos: Mapa do Mundo | Sistema Político | Fatos Históricos | Cultura | Magia e Tecnologia | Seres Fantásticos | Economia | Língua e Cultura | Mitologia | Personagens | Narrativa e Trama
-
-## 3. O QUE É GRAU I (IMUTÁVEL)
-Quais elementos parecem ser fundações não-negociáveis do projeto?
-
-## 4. AS TRÊS PERGUNTAS MAIS URGENTES
-As três perguntas que mais precisam de resposta para desenvolver o universo com coerência.
-
-## 5. CONVITE CRIATIVO
-Uma conexão não óbvia percebida no material — um fio de ouro para a primeira sessão.
-
-Tom: caloroso, preciso, entusiasmado com o projeto.`;
-
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:2000, messages:[{role:'user',content:prompt}] })
+// ── DIAGNÓSTICO VIA WORKER (sem chaves no cliente) ───────
+async function analyzeWithClaude(summary) {
+  const res = await fetch(`${WORKER_URL}/diagnose`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      files_content: summary,
+      project_name:  'Edmund Puzzle',
+      repo_slug:     GH_REPO
+    })
   });
-  if (!res.ok) { const e = await res.json(); throw new Error(e.error?.message||`HTTP ${res.status}`); }
-  return (await res.json()).content[0].text;
+  if (!res.ok) { const e = await res.json(); throw new Error(e.error || `HTTP ${res.status}`); }
+  return (await res.json()).report;
 }
 
 function parseFrutos(text) {
@@ -862,9 +855,7 @@ function renderFrutos(frutos) {
 
 // ── MAIN FLOW ────────────────────────────────────────────
 async function startUpload() {
-  const token = document.getElementById('gh-token').value.trim();
-  const key   = document.getElementById('claude-key').value.trim();
-  if (!token || !key || files.length === 0) return;
+  if (files.length === 0) return;
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true; btn.textContent = '⏳  Enviando…';
@@ -881,7 +872,7 @@ async function startUpload() {
     document.getElementById(`fi-${i}`).className   = 'file-item uploading';
     log(`Enviando ${f.name} → /${folder(f.name)}/`, 'info');
     try {
-      await uploadToGitHub(f, token);
+      await uploadToGitHub(f);
       document.getElementById(`fs-${i}`).textContent = '✓ enviado';
       document.getElementById(`fs-${i}`).className   = 'fi-status done';
       document.getElementById(`fi-${i}`).className   = 'file-item done';
@@ -904,11 +895,25 @@ async function startUpload() {
   rw.style.display = 'block';
   setTimeout(() => rw.scrollIntoView({behavior:'smooth',block:'start'}), 300);
 
-  const summary = `Arquivos enviados (${GH_OWNER}/${GH_REPO}):\n` +
-    names.map(n=>`- ${n} (/${folder(n)}/)`).join('\n') + `\n\nTotal: ${ok} arquivo(s)`;
+  // Extrair texto dos arquivos enviados
+  log('Extraindo conteúdo dos arquivos para análise…', 'info');
+  const extractedContents = [];
+  for (const f of files) {
+    if (names.includes(f.name)) {
+      const extracted = await extractTextFromFile(f);
+      extractedContents.push(extracted);
+      log(`📄 Extraído: ${f.name}`, 'info');
+    }
+  }
+
+  const summary = `ARQUIVOS ENVIADOS (${ok} arquivo(s)):
+${extractedContents.map(e => `
+--- ARQUIVO: ${e.name} ---
+${e.text}
+`).join('\n')}`;
 
   try {
-    const report = await analyzeWithClaude(summary, key);
+    const report = await analyzeWithClaude(summary);
     log('Diagnóstico gerado ✓', 'ok');
     document.getElementById('report-thinking').style.display = 'none';
     document.getElementById('report-title').textContent = 'Diagnóstico SFBS · Edmund Puzzle';
@@ -926,7 +931,7 @@ async function startUpload() {
 }
 
 // ── INIT ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => { toggleConfig(); });
+document.addEventListener('DOMContentLoaded', () => { updateBtn(); });
 </script>
 </body>
 </html>
