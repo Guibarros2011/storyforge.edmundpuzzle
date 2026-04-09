@@ -1,0 +1,98 @@
+# DIAGNÓSTICO SFBS - EDMUND PUZZLE
+
+## 1. O QUE ENTENDEMOS
+
+**Edmund Puzzle** é um universo narrativo para VR centrado em **Edmund**, um caçador de relíquias que viaja através do tempo e espaço para recuperar artefatos bíblicos roubados de um museu. O projeto combina aventura arqueológica com evangelização, onde cada jornada temporal serve tanto para recuperar relíquias quanto para ensinar sobre o evangelho.
+
+**Personagens centrais identificados:**
+- **Edmund** (protagonista caçador de relíquias)
+- **Mr. Moore** (figura de autoridade, possivelmente o contratante)
+- **Beth Puzzle** (personagem relacionada, possivelmente família de Edmund)
+
+**Conflito:** Recuperação de relíquias sagradas através de múltiplas eras históricas, enfrentando antagonistas em cada período.
+
+**Tom:** Aventura educativa com propósito evangelístico, mesclando ação e aprendizado bíblico.
+
+## 2. COBERTURA DOS 11 FRUTOS
+
+**Mapa do Mundo** ✅ **COBERTO**
+- Múltiplas eras claramente definidas: Egito Antigo, Medieval, Velho Oeste, Era Moderna, Futuro
+- Ambientes específicos: museus, cavernas, celas, cidades futuristas, Vaticano, Japão
+
+**Sistema Político** ❌ **LACUNA**
+- Não há estrutura política clara em nenhuma era
+- Indefinição sobre autoridades e hierarquias
+
+**Fatos Históricos** ⚠️ **PARCIAL**
+- Períodos históricos identificados mas sem contexto específico
+- Eventos bíblicos implícitos mas não explicitados
+
+**Cultura** ⚠️ **PARCIAL**
+- Ambientação visual por era, mas sem desenvolvimento cultural profundo
+- Elementos visuais sugerem culturas específicas
+
+**Magia e Tecnologia** ⚠️ **PARCIAL**
+- Viagem no tempo presente mas mecanismos indefinidos
+- Tecnologia futurística (nano-robôs, salas tecnológicas)
+- VR como metafísica implícita
+
+**Seres Fantásticos** ⚠️ **PARCIAL**
+- "Inimigos" identificados mas não detalhados
+- Nano-robôs como possíveis antagonistas tecnológicos
+
+**Economia** ❌ **LACUNA**
+- Sem sistema econômico definido
+- Motivações comerciais inexploradas
+
+**Língua e Cultura** ❌ **LACUNA**
+- Barreira linguística entre eras não abordada
+- Comunicação temporal não explicada
+
+**Mitologia** ✅ **COBERTO**
+- Base bíblica sólida
+- Artefatos sagrados como elementos centrais
+- "Escada de Jacó" como elemento místico
+
+**Personagens** ⚠️ **PARCIAL**
+- Personagens identificados mas pouco desenvolvidos
+- Relacionamentos indefinidos
+
+**Narrativa e Trama** ⚠️ **PARCIAL**
+- Estrutura episódica por era
+- Conexões narrativas entre períodos indefinidas
+
+## 3. O QUE É GRAU I (IMUTÁVEL)
+
+1. **Edmund como caçador de relíquias temporais** - identidade central do protagonista
+2. **Viagem no tempo como mecânica principal** - fundamento do gameplay
+3. **Artefatos bíblicos como objetivos** - propósito evangelístico
+4. **Múltiplas eras históricas** - estrutura temporal estabelecida
+5. **Roubo inicial do museu** - evento catalisador
+6. **Propósito educativo-religioso** - missão evangelística do projeto
+
+## 4. AS TRÊS PERGUNTAS MAIS URGENTES
+
+**1. COMO FUNCIONA A VIAGEM NO TEMPO?**
+É tecnologia, magia, dom divino? Há regras, limitações, custos? Edmund pode alterar a história?
+
+**2. QUEM SÃO OS VERDADEIROS ANTAGONISTAS?**
+Quem roubou as relíquias e por quê? Há uma conspiração temporal? Os inimigos são os mesmos em todas as eras?
+
+**3. QUAL É A CONEXÃO ENTRE AS RELÍQUIAS?**
+Por que esses artefatos específicos? Há um padrão temporal? Eles formam algo maior quando reunidos?
+
+## 5. CONVITE CRIATIVO
+
+**O FATOR BETH PUZZLE** surge como uma conexão não óbvia fascinante. Seu cartaz sugere "Unraveling the Final Words" - será ela uma decifradora de códigos temporais? Uma arqueóloga linguística que traduz as pistas deixadas pelas relíquias através das eras? 
+
+A presença de elementos como "Translator" e a diversidade temporal sugerem que Beth pode ser a chave para entender não apenas ONDE encontrar as relíquias, mas QUANDO elas precisam ser coletadas para formar uma revelação maior. Ela poderia ser a ponte entre a ação de Edmund e o propósito divino da missão.
+
+---
+
+**NOTA DE COERÊNCIA GERAL: 6.5/10**
+
+**Pontos fortes:** Conceito visual sólido, diversidade temporal bem estabelecida, propósito claro.
+
+**Pontos críticos:** Mecânicas temporais indefinidas, antagonistas vagos, conexões narrativas fracas entre eras.
+
+**Prioridade:** Definir as regras da viagem temporal e a natureza dos antagonistas para sustentar a consistência interna do universo.
