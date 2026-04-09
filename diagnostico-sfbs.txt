@@ -1,0 +1,50 @@
+# DIAGNÓSTICO SFBS - EDMUND PUZZLE
+
+## 1. O QUE ENTENDEMOS
+
+**Edmund Puzzle** é um universo narrativo transmídia centrado em um jogo VR de aventura com temática bíblica. O protagonista é um caçador de relíquias que viaja através do tempo e espaço para recuperar artefatos sagrados roubados de um museu. 
+
+**Personagens Centrais:** Edmund (protagonista caçador), Mr. Moore (figura recorrente nos assets visuais), Beth Puzzle (personagem spin-off), e antagonistas hackers/tecnológicos.
+
+**Conflito Principal:** Recuperação de relíquias bíblicas perdidas através de múltiplas épocas históricas, com um subtexto evangelístico onde companheiros aprendem sobre o evangelho durante a jornada.
+
+**Tom:** Aventura épica educativa com elementos místicos, misturando reverência bíblica com ação cinematográfica. O universo combina cenários históricos autênticos (Egito, Medieval, Velho Oeste, Vaticano, Japão) com elementos futuristas distópicos.
+
+## 2. COBERTURA DOS 11 FRUTOS
+
+**✅ Mapa do Mundo:** Múltiplas épocas e locações bem definidas visualmente
+**⚠️ Sistema Político:** Parcialmente implícito através dos cenários históricos
+**✅ Fatos Históricos:** Base bíblica sólida com períodos históricos diversos
+**⚠️ Cultura:** Elementos visuais ricos, mas necessita sistematização
+**✅ Magia e Tecnologia:** Viagem temporal, nano-robôs, tecnologia futurista
+**⚠️ Seres Fantásticos:** Inimigos presentes, mas não completamente definidos
+**❌ Economia:** Lacuna total no sistema econômico
+**❌ Língua e Cultura:** Sem desenvolvimento linguístico específico
+**✅ Mitologia:** Base bíblica forte com relíquias sagradas
+**⚠️ Personagens:** Protagonistas definidos, mas desenvolvimento limitado
+**⚠️ Narrativa e Trama:** Estrutura clara, mas capítulos inacessíveis
+
+## 3. O QUE É GRAU I (IMUTÁVEL)
+
+- **Fundação Bíblica:** O universo é intrinsecamente ligado às escrituras e tem propósito evangelístico
+- **Viagem Temporal:** Mecânica central para conectar diferentes épocas
+- **Caçador de Relíquias:** Edmund como arqueólogo aventureiro é o coração narrativo
+- **Múltiplas Épocas:** Diversidade temporal como pilar da experiência
+- **Propósito Educativo:** Ensino do evangelho integrado à aventura
+- **Experiência VR:** Concebido especificamente para realidade virtual
+
+## 4. AS TRÊS PERGUNTAS MAIS URGENTES
+
+1. **Como funciona exatamente o sistema de viagem temporal?** A mecânica central precisa de regras claras - é tecnológica, mística, ou divina? Como Edmund controla quando/onde vai?
+
+2. **Qual é a origem e motivação dos antagonistas?** Os elementos futuristas distópicos e hackers sugerem uma conspiração maior - quem roubou as relíquias e por quê?
+
+3. **Como as diferentes épocas históricas se conectam narrativamente?** Existe uma linha temporal coerente que Edmund segue, ou cada relíquia existe em sua época natural?
+
+## 5. CONVITE CRIATIVO
+
+**O Paradoxo do Tempo Sagrado:** Os assets visuais revelam uma tensão fascinante entre o sagrado atemporal e a tecnologia temporal. As relíquias bíblicas não deveriam "pertencer" a épocas específicas - elas transcendem o tempo. Isso sugere que Edmund não está apenas recuperando objetos, mas **restaurando a ordem temporal sagrada** que foi deliberadamente fragmentada.
+
+A presença de nano-robôs e cenários futuristas distópicos junto com a "Escada de Jacó" implica que existe uma guerra temporal entre forças que querem fragmentar o sagrado através do tempo versus aquelas que buscam sua unidade. Edmund pode ser menos um caçador de tesouros e mais um **restaurador da continuidade divina**.
+
+Esta é uma oportunidade única para explorar como o sagrado interage com diferentes culturas e épocas, criando uma narrativa onde cada relíquia não apenas conta sua própria história, mas revela como a mensagem divina se manifesta universalmente através da história humana.
